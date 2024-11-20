@@ -1,0 +1,69 @@
+{% extends "index.html" %}
+{% block content %}
+
+<head>
+    <!-- Existing head content... -->
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Add Bootstrap JS and its dependencies -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+
+<div class="attendacelist">
+    <a href="/Userlist" role="button" class="attendacelist_button1">登録一覧へ行く！</a>
+    <a href="/attendance_count" role="button" class="attendacelist_button1">出席回数確認</a>
+    <a href="/export_data" role="button1" class="attendancelist-btn2">データ出力</a>
+    <h1>出席表</h1>
+    <table>
+        <tr>
+            <th>番号</th>
+            <th>学生番号</th>
+            <th>氏名</th>
+            <th>日付</th>
+            <th>写真</th>
+            <th>操作</th> 
+        </tr>
+
+        {% for item in data %}
+        <tr>
+            <td>{{ item[3] }}</td>
+            <td>{{ item[0] }}</td>
+            <td>{{ item[1] }}</td>
+            <td>{{ item[2] }}</td>
+            <td>
+                {% if item[4] != None %}
+                <img src="/static/img_faces/{{ item[4] }}" alt="{{ item[1] }}'s photo" height="100px" data-toggle="modal" data-target="#modal{{ loop.index }}">
+                {% else %}
+                画像なし
+                {% endif %}
+            </td>
+            <td><a href="/attendance_delete_one?number={{ item[3] }}" role="button" class="attendancelist-btn2">削除</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Modal outside the table -->
+    {% for item in data %}
+    {% if item[4] != None %}
+    <div class="modal fade" id="modal{{ loop.index }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="/static/img_faces/{{ item[4] }}" alt="{{ item[1] }}'s photo" style="width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    <a href="/attendance_delete_all" role="button" class="attendancelist-btn2">全部削除する</a>
+</div>
+
+{% endblock %}
+

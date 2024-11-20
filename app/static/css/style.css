@@ -1,0 +1,614 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+
+/* -------------------------------
+header
+-------------------------------- */
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+    width: 100%;
+    background-color: rgba(201, 1, 1, 0.778);
+    color: #FFF7F7;
+    font-family: 'EB Garamond', serif;
+    font-weight: 700;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    height: 80px;
+}
+
+
+
+.header-nav-menu {
+    display: flex;
+}
+
+.header-nav-item>a {
+    color: white;
+}
+
+.header-nav-item a:hover {
+    color: rgba(58, 58, 58, 0.2);
+}
+
+.header-logo-title {
+    font-size: 50px;
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+    color: red;
+}
+
+.header-nav-menu {
+    margin-right: 50px;
+}
+
+.header-nav-menu a {
+    font-size: 30px;
+}
+
+.header-nav-item {
+    margin-left: 30px;
+}
+
+.label {
+    color: white;
+}
+
+/* -------------------------------
+login.html
+-------------------------------- */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background-color: #F5F5F5;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header1 {
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    max-width: 1280px;
+}
+
+.container>div {
+    flex-grow: 1;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #FFFFFF;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .newaccountbutton {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.container form {
+    width: 100%;
+    max-width: 300px;
+}
+
+.container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.container input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.container button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1em;
+}
+
+@media (max-width: 720px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+video {
+    width: 80%;
+    max-width: 720px;
+    height: auto;
+}
+
+/* -------------------------------
+welcome.html
+-------------------------------- */
+
+
+/* Existing styles */
+.balloon2 {
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #0888ff;
+    max-width: 450px;
+    text-align: center;
+}
+
+.balloon2::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    right: -15px;
+    top: 100px;
+    border-left: 15px solid #0888ff;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+}
+
+.balloon2 .icon {
+    position: absolute;
+    right: -300px;
+    top: 0;
+}
+
+.logout_button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.logout_button button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.5em;
+    width: 200px;
+}
+
+/* -------------------------------
+new_account.html
+-------------------------------- */
+
+/* 新規登録フォームのスタイル */
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 2em;
+    max-width: 500px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+.label1 {
+    margin-bottom: 0.5em;
+}
+
+.inputcreate input {
+    padding: 1em;
+    font-size: 1.2em;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn {
+    padding: 0.7em 1em;
+    font-size: 1em;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 1em;
+    width: 500px;
+    height: 50px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.newaccountbutton-container {
+    text-align: center;
+}
+
+/* メッセージのスタイル */
+.flashed-messages {
+    margin-bottom: 1em;
+    color: red;
+}
+
+/* レスポンシブデザイン */
+@media screen and (max-width: 768px) {
+    .center {
+        padding: 1em;
+        max-width: 90%;
+    }
+
+    .inputcreate input {
+        font-size: 1em;
+    }
+
+    .btn {
+        font-size: 0.9em;
+    }
+
+    .new_account_face_reader {
+        padding: 1em;
+        max-width: 90%;
+    }
+
+    .capture-container {
+        flex-direction: column;
+    }
+
+    .video-capture,
+    .image-preview {
+        width: 100%;
+    }
+
+    .new_account_check>div:first-of-type {
+        flex-direction: column;
+    }
+
+    .new_account_check>div:first-of-type img {
+        max-width: 100%;
+    }
+
+    .new_account_welcome {
+        padding: 1em;
+    }
+
+    .new_account_welcome h1 {
+        font-size: 1.5em;
+    }
+
+    .new_account_welcome h2 {
+        font-size: 1.2em;
+    }
+
+}
+
+/* -------------------------------
+new_account_face_reader.html
+-------------------------------- */
+/* 顔認証システムのスタイル */
+.new_account_face_reader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 2em;
+    max-width: 1000px;
+
+}
+
+.new_account_face_reader video {
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+}
+
+.instruction,
+.video-container,
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.capture-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1em;
+}
+
+.video-container,
+.image-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 1em;
+    border: 1px solid #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+
+}
+
+.image-preview_photo {
+    width: 100%
+}
+
+.camera-btn {
+    margin-top: 1em;
+    padding: 0.7em 1em;
+    font-size: 1em;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.camera-btn2 {
+    margin-top: 1em;
+    padding: 0.7em 1em;
+    font-size: 1em;
+    color: white;
+    background-color: blue;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+/* -------------------------------
+new_account_check.html
+-------------------------------- */
+.new_account_check {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 2em;
+    max-width: 800px;
+}
+
+.new_account_check h1 {
+    margin-bottom: 2em;
+    font-size: 2em;
+}
+
+.new_account_check>div:first-of-type {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2em;
+    margin-bottom: 2em;
+    width: 100%;
+    padding: 2em;
+    border: 1px solid #000;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.new_account_check>div:first-of-type>div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid #000;
+    border-radius: 15px;
+    padding: 1em;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.new_account_check>div:first-of-type>div p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.new_account_check>div:first-of-type img {
+    max-width: 50%;
+    height: auto;
+    border: 1px solid #000;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.collection {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.btn1,
+.btn2 {
+    padding: 1em 8em;
+    font-size: 1em;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn1 {
+    background-color: #00bcd4;
+}
+
+.btn2 {
+    background-color: red;
+}
+
+/* -------------------------------
+new_account_welcome.html
+-------------------------------- */
+.new_account_welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 2em;
+    max-width: 800px;
+    background: #4CAF50;
+    /* Let's make the background a nice, cool green color */
+    color: white;
+    /* And make the text white for contrast */
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    /* Give it a nice box shadow for depth */
+}
+
+.new_account_welcome h1,
+.new_account_welcome h2 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.new_account_welcome h1 {
+    font-size: 2em;
+}
+
+.new_account_welcome h2 {
+    font-size: 1.5em;
+}
+
+.btn3 {
+    padding: 0.7em 2em;
+    font-size: 1.2em;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 2em;
+}
+
+
+
+.attendacelist {
+    font-family: Arial, sans-serif;
+}
+
+.attendacelist h1 {
+    text-align: center;
+    color: #333;
+}
+
+.attendacelist table {
+    margin: 0 auto;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.2em;
+    /* 大きなフォントサイズ */
+}
+
+.attendacelist th,
+.attendacelist td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.attendacelist th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.attendacelist tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.attendacelist tr:hover {
+    background-color: #ddd;
+}
+
+.attendacelist .attendacelist_button1,
+.attendacelist .attendancelist-btn2 {
+    display: block;
+    width: 100%;
+    /* ボタンの横幅を大きく */
+    max-width: 300px;
+    /* max-widthを300pxに調整 */
+    height: 60px;
+    /* ボタンの高さを大きく */
+    margin: 20px auto;
+    background-color: #f44336;
+    /* 背景色を赤色に */
+    color: white;
+    text-align: center;
+    line-height: 60px;
+    /* line-heightを高さに合わせて調整 */
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.attendacelist .attendacelist_button1:hover,
+.attendacelist .attendancelist-btn2:hover {
+    background-color: #e31c0d;
+    /* ホバー時の背景色を深い赤色に */
+}
+
+@media screen and (max-width: 600px) {
+
+    .attendacelist table,
+    .attendacelist th,
+    .attendacelist td {
+        font-size: 1em;
+        /* モバイル時のフォントサイズ */
+    }
+
+    .attendacelist .attendacelist_button1,
+    .attendacelist .attendancelist-btn2 {
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .attendacelist table,
+    .attendacelist th,
+    .attendacelist td {
+        font-size: 1em;
+    }
+
+    .attendacelist .btn2 {
+        height: 50px;
+        line-height: 50px;
+    }
+}

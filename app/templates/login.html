@@ -1,0 +1,125 @@
+{% extends "index.html" %}
+{% block content %}
+
+<h1 class="header1">顔認証 または 学籍番号 を入力してください</h1>
+
+<div class="container">
+    <div>
+        <h1>顔認証</h1>
+        <video id="video" width="720" height="560"></video>
+        <button id="camera-toggle">カメラ起動/停止</button>
+        <script>
+            const video = document.getElementById('video');
+            let stream = null;
+            const button = document.getElementById('camera-toggle');
+            let timer = null;
+
+            window.onload = function() {
+                startCamera();
+            };
+
+            function startCamera() {
+                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                    navigator.mediaDevices.getUserMedia({ video: true }).then(function (s) {
+                        stream = s;
+                        video.srcObject = stream;
+                        video.play();
+                        timer = setTimeout(function () {
+                            stream.getTracks().forEach(track => track.stop());
+                            stream = null;
+                        }, 60000);
+                    });
+                }
+            }
+
+            button.addEventListener('click', function () {
+                if (stream) {
+                    clearTimeout(timer);
+                    stream.getTracks().forEach(track => track.stop());
+                    stream = null;
+                } else {
+                    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                        navigator.mediaDevices.getUserMedia({ video: true }).then(function (s) {
+                            stream = s;
+                            video.srcObject = stream;
+                            video.play();
+                            timer = setTimeout(function () {
+                                stream.getTracks().forEach(track => track.stop());
+                                stream = null;
+                            }, 60000);
+                        });
+                    }
+                }
+            });
+
+            // Elements for taking the snapshot
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+
+            // Process frames every 1 seconds
+            setInterval(function () {
+                if (!stream) {
+                    return;
+                }
+
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                context.drawImage(video, 0, 0, 640, 480);
+                let imageData = canvas.toDataURL('image/png');
+
+                // Send image data to server
+                fetch('/verify', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        image: imageData
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.name === 'Unknown') {
+                            console.log('No faces recognized. Continuing video.');
+                        } else {
+                            clearTimeout(timer);
+                            stream.getTracks().forEach(track => track.stop());
+                            stream = null;
+
+                            var result = confirm(`以下でログインしますがよろしいですか\n\n${data.name}`);
+                            if (result) {
+                                window.location.href = "/ok?name=" + encodeURIComponent(data.name);
+                            }
+                            else {
+                                // If 'No' is selected, reactivate the camera
+                                startCamera();
+                                }
+                            }
+                        }
+                    );
+            }, 1000);
+        </script>
+    </div>
+    <div>
+        <form action="/login" method="post">
+            <div>
+                <label for="user">学籍番号</label>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+                <input type="text" id="user" name="studentnumber">
+            </div>
+            <button type="submit">ログイン</button>     
+        </form>
+        <br>
+        <a href="/new_account" class="btn2">初めて来た方はこちら</a>
+    </div>
+</div>
+
+{% endblock %}

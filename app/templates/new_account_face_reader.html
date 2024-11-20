@@ -1,0 +1,83 @@
+{% extends "index.html" %}
+{% block content %}
+
+<div class="new_account_face_reader">
+    <h1>顔認証用写真撮影</h1>
+    <a>顔認証用の写真を撮ります. もし撮るのがNGな方は「決定」を押してください！
+    </a>
+
+    <div class="capture-container">
+        <div class="video-container">
+            <a>カメラに近づいて撮影してください</a>
+            <video id="video" width="720" height="560" autoplay></video>
+            <button id="captureButton" class="camera-btn"> 撮影する</button>
+        </div>
+
+        <div class="image-preview">
+            <a>撮影した写真はこちら</a>
+            <canvas id="canvas" style="display: none;"></canvas>
+            <img id="capturedImage" class="image-preview_photo" style="display: none;">
+            <button id="confirmButton" class="camera-btn2">決定</button>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+        const captureButton = document.getElementById('captureButton');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const capturedImage = document.getElementById('capturedImage');
+        const confirmButton = document.getElementById('confirmButton');
+
+        // Get access to the camera
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+                video.srcObject = stream;
+                video.play();
+            });
+        }
+
+        // Capture photo when button is clicked
+        captureButton.addEventListener('click', function () {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            let imageData = canvas.toDataURL('image/jpeg');
+
+            // Set the captured photo as the source of the image element
+            capturedImage.src = imageData;
+            capturedImage.style.display = 'block';
+
+            // Show the confirm button
+            confirmButton.style.display = 'block';
+
+            // Change the button text to '再撮影'
+            captureButton.innerText = '再撮影';
+
+            // Send image data to server and register the photo
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    image: imageData
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    // Handle the response if needed
+                });
+        });
+
+        // Confirm and redirect to /new_account_check
+        confirmButton.addEventListener('click', function () {
+            window.location.href = `/new_account_check`;
+        });
+    </script>
+</div>
+
+
+
+{% endblock %}

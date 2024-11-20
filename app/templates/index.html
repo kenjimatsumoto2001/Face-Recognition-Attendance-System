@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>プログラミング演習2</title>
+    <meta charset="utf-8" />
+
+</head>
+
+<header class="header">
+    <div class="header-logo">
+        <span class="header-logo-title"> Follow UP </span>
+    </div>
+    <nav class="header-nav">
+        <ul class="header-nav-menu">
+            <li class="header-nav-item"><a href="/logout">HOME</a></li>
+            <!-- <li class="header-nav-item"><a href="/attendance">出席一覧</a></li> -->
+            <!-- <li class="header-nav-item"><a href="https://gate.si-lab.org/openlab2024/">Open Lab</a></li> -->
+            <li class="header-nav-item"><a href="/attendance">出席</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+    {% block content %}
+    
+    {% endblock %}
+</body>
+
+</html>

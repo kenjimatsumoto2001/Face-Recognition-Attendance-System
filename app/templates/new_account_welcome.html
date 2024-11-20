@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+{% block content %}
+<head>
+    <meta http-equiv="Refresh" content="5;/logout">
+</head>
+
+<div class="new_account_welcome">
+    <h1>{{new_username}} さん登録ありがとう！</h1>
+    <h1>今日は出席登録してあります！</h1>
+    <h2>次回から 学生番号 か 顔認証 で出席してください!</h2>
+    <a href="/logout" role="button" class="btn3">最初に戻る</a>
+</div>
+{% endblock %}

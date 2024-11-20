@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+{% block content %}
+
+<div class="new_account_check">
+    <h1>登録情報の確認</h1>
+    <div>
+        <div>
+            <p>学籍番号: {{ new_studentnumber }}</p>
+            <p>氏名: {{ new_username }}</p>
+        </div>
+        <img src="{{ image_filename }}" alt="Captured Photo">
+    </div>
+    <div class="collection">
+        <a href="/new_account_re_enter" role="button" class="btn2">戻る</a>
+        <button onclick="redirectToComplete()" class="btn1" id="registerButton">登録</button>
+    </div>
+</div>
+
+<script>
+    function redirectToComplete() {
+        document.getElementById('registerButton').disabled = true; // ボタンを無効化
+        document.getElementById('registerButton').innerHTML = '処理中...'; // テキスト変更
+        window.location.href = '/new_account_complete'; // URLに遷移
+    }
+</script>
+
+{% endblock %}

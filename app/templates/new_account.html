@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="login">
+    <div class="introduction">
+        <h1> 新規登録 : 学生証番号と氏名を入れてください</h1>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flashed-messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <div class="center">
+        <form class="inputcreate" method="post" action="/new_account_create">
+            <div class="form-group">
+                <label class="label1" for="new_studentnumber">学生証番号 :</label>
+                <input type="text" id="newusername" placeholder="student number" name="new_studentnumber" required>
+            </div>
+
+            <div class="form-group">
+                <label class="label1" for="new_username"> 氏名 :</label>
+                <input type="text" id="newname" placeholder="your name" name="new_username" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">Create</button>
+            <p class="newaccountbutton-container">
+                <a href="/logout" class="newaccountbutton">登録をやめる</a>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

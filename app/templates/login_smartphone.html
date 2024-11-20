@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+{% block content %}
+
+<h1 class="header1">学籍番号 を入力してください</h1>
+
+<div class="container">
+    <div>
+        <form action="/login" method="post">
+            <div>
+                <label for="user">学籍番号</label>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+                <input type="text" id="user" name="studentnumber">
+            </div>
+            <button type="submit">ログイン</button>     
+        </form>
+    </div>
+</div>
+
+<style>
+    #user {
+        font-size: 20px; /* テキストの大きさを16ピクセルに設定 */
+    }
+    #container input[type="text"]{
+        padding: 18px;
+    }
+</style>
+
+{% endblock %}
