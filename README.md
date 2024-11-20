@@ -13,3 +13,13 @@ Dockerがインストールされていない場合、以下のリンクからDo
 ```bash
 git clone https://github.com/your-username/Face-Recognition-Attendance-System.git
 cd Face-Recognition-Attendance-System
+
+## 3. Dockerの起動
+以下のコマンドでDockerコンテナを起動します:
+```bash
+docker compose up -d
+
+## 4. アプリケーションのアクセス
+コンテナが正常に起動したら、以下のURLにアクセスしてシステムを利用できます:
+localhost:4232/login
+
