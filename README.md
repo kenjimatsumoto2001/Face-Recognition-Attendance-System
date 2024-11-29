@@ -24,7 +24,7 @@ docker compose up -d
 コンテナが正常に起動したら、以下のURLにアクセスしてシステムを利用できます:  
 [http://localhost:4232/login](http://localhost:4232/login)
 
-## 4. 出席へのログイン方法
+## 4. 出席一覧のログイン方法
 ユーザー名: user  
 パスワード: password
 
